@@ -5,7 +5,11 @@ export const metadata = {
 };
 
 function Page() {
-  return <h1>Account of Wild Oasis</h1>;
+  return (
+    <h2 className="text-2xl font-semibold text-accent-400 mb-7">
+      Welcome, Navjot
+    </h2>
+  );
 }
 
 export default Page;
