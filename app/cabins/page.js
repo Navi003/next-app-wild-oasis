@@ -1,14 +1,17 @@
 import React from "react";
 import Counter from "../_components/Counter";
 import CabinCard from "../_components/CabinCard";
+import { getCabin } from "../_lib/data-service";
 
-export const metadat = {
+export const metadata = {
   title: "Cabins",
 };
 
-export default function Page() {
+export default async function Page() {
   // CHANGE
-  const cabins = [];
+  const cabins = await getCabin();
+
+  console.log(cabins);
 
   return (
     <div>
@@ -24,9 +27,9 @@ export default function Page() {
         to paradise.
       </p>
 
-      {cabins.length > 0 && (
+      {cabins?.length > 0 && (
         <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:gap-12 xl:gap-14">
-          {cabins.map((cabin) => (
+          {cabins?.map((cabin) => (
             <CabinCard cabin={cabin} key={cabin.id} />
           ))}
         </div>
