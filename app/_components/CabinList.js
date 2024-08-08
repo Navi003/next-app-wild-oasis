@@ -1,6 +1,6 @@
 import React from "react";
 import CabinCard from "./CabinCard";
-import CabinCard from "./_components/CabinCard";
+// import CabinCard from "./_components/CabinCard";
 import { getCabins } from "../_lib/data-service";
 
 async function CabinList() {
