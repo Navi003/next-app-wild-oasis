@@ -18,7 +18,6 @@ export async function generateStaticParams() {
       cabinId: String(cabin.id),
     };
   });
-
   return ids;
 }
 
@@ -27,8 +26,6 @@ export default async function Page({ params }) {
 
   const { id, name, maxCapacity, regularPrice, discount, image, description } =
     cabin;
-
-  console.log(params);
 
   return (
     <div className="max-w-6xl mx-auto mt-8">
