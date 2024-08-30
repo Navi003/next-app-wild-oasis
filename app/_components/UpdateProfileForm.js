@@ -2,11 +2,7 @@
 import React, { useState } from "react";
 import { updateGuest } from "../_lib/actions";
 function UpdateProfileForm({ guest, children }) {
-  const [count, setCount] = useState();
-
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
-
-  console.log(guest.email);
 
   return (
     <form
@@ -36,11 +32,11 @@ function UpdateProfileForm({ guest, children }) {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
-          {/* <img
+          <img
             src={countryFlag}
             alt="Country flag"
             className="h-5 rounded-sm"
-          /> */}
+          />
         </div>
       </div>
 
