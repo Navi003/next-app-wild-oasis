@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { supabase } from "./supabase";
+import { redirect } from "next/navigation";
+import { getBookings } from "./data-service";
 
 export async function signInAction() {
   await signIn("google", { redirectTo: "/account" });
@@ -63,4 +65,38 @@ export async function deleteResveration(bookingId) {
   }
 
   revalidatePath("/account/reservations");
+}
+
+export async function updateBooking(formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+  const bookingId = Number(formData.get("bookingId"));
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingsIds = guestBookings.map((booking) => booking.id);
+
+  if (!guestBookingsIds.includes(bookingId)) {
+    throw new Error("You are not allowed to do this action");
+  }
+
+  const updateData = {
+    numGuests: Number(formData.get("numGuests")),
+    observation: formData.get("observation"),
+  };
+
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(updateData)
+    .eq("id", bookingId)
+    .select()
+    .single();
+
+  if (error) {
+    console.error(error);
+    throw new Error("Booking could not be updated");
+  }
+
+  revalidatePath(`/account/reservations/${bookingId}`);
+  revalidatePath("/account/reservations");
+
+  redirect("/account/reservations");
 }
