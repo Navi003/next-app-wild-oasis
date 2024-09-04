@@ -32,7 +32,7 @@ export async function createBooking(bookingData, formData) {
   const session = await auth();
   if (!session) throw new Error("You must be logged in");
 
-  console.log(bookingData);
+  bookingData;
 
   const newBooking = {
     ...bookingData,
@@ -46,10 +46,10 @@ export async function createBooking(bookingData, formData) {
     status: "unconfirmed",
   };
 
-  console.log(newBooking);
+  newBooking;
 
   const { error } = await supabase.from("bookings").insert([newBooking]);
-  // console.log(error.message);
+  // (error.message);
 
   if (error) throw new Error("Booking could not be created");
 

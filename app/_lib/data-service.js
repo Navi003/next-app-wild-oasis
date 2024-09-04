@@ -15,7 +15,7 @@ export async function getCabin(id) {
   // For testing
   // await new Promise((res) => setTimeout(res, 1000));
 
-  // console.log("FROM GET CABIN", data);
+  // ("FROM GET CABIN", data);
 
   if (error) {
     console.error(error);
@@ -63,7 +63,7 @@ export async function getGuest(email) {
 
     return data;
   } catch (error) {
-    console.log(error.message);
+    error.message;
   }
 
   // No error here! We handle the possibility of no guest in the sign in callback

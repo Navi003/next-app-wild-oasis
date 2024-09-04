@@ -11,9 +11,9 @@ export default async function Page() {
   // CHANGE
 
   const session = await auth();
-  console.log(session.user.email);
+  session.user.email;
   const guest = await getGuest(session.user.email);
-  console.log(guest);
+  guest;
 
   return (
     <div>

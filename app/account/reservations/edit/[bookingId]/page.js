@@ -8,7 +8,7 @@ export default async function Page({ params }) {
   const { numGuests, observation, cabinId } = await getBooking(bookingId);
   const reservationId = 23;
 
-  console.log(observation);
+  observation;
 
   const { maxCapacity } = await getCabin(cabinId);
 

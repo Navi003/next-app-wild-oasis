@@ -9,7 +9,7 @@ async function CabinList({ filter }) {
 
   const cabins = await getCabins();
 
-  console.log(cabins);
+  cabins;
 
   if (!cabins.length) return null;
 
