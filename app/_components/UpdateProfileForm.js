@@ -1,8 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { updateGuest } from "../_lib/actions";
-import { SubmitButton } from "@/app/_components/SubmitButton";
+import SubmitButton from "./SubmitButton";
+
 function UpdateProfileForm({ guest, children }) {
+  const [count, setCount] = useState();
+
   const { fullName, email, nationality, nationalID, countryFlag } = guest;
 
   return (
@@ -13,8 +17,8 @@ function UpdateProfileForm({ guest, children }) {
       <div className="space-y-2">
         <label>Full name</label>
         <input
-          defaultValue={fullName}
           disabled
+          defaultValue={fullName}
           name="fullName"
           className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
@@ -25,7 +29,7 @@ function UpdateProfileForm({ guest, children }) {
         <input
           disabled
           defaultValue={email}
-          fullName="email"
+          name="email"
           className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800 disabled:cursor-not-allowed disabled:bg-gray-600 disabled:text-gray-400"
         />
       </div>
@@ -39,21 +43,21 @@ function UpdateProfileForm({ guest, children }) {
             className="h-5 rounded-sm"
           />
         </div>
+
+        {children}
       </div>
 
       <div className="space-y-2">
         <label htmlFor="nationalID">National ID number</label>
         <input
-          name="nationalID"
           defaultValue={nationalID}
+          name="nationalID"
           className="w-full px-5 py-3 rounded-sm shadow-sm bg-primary-200 text-primary-800"
         />
       </div>
 
-      {children}
-
       <div className="flex items-center justify-end gap-6">
-        <SubmitButton pendingLabel="updating...">Update Profile</SubmitButton>
+        <SubmitButton pendingLabel="Updating...">Update profile</SubmitButton>
       </div>
     </form>
   );
