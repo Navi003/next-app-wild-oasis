@@ -15,7 +15,7 @@ function ReservationCard({ booking, onDelete }) {
     guestId,
     startDate,
     endDate,
-    numNights,
+    numNIght,
     totalPrice,
     numGuests,
     status,
@@ -37,7 +37,7 @@ function ReservationCard({ booking, onDelete }) {
       <div className="flex flex-col flex-grow px-6 py-3">
         <div className="flex items-center justify-between">
           <h3 className="text-xl font-semibold">
-            {numNights} nights in Cabin {name}
+            {numNIght} nights in Cabin {name}
           </h3>
           {isPast(new Date(startDate)) ? (
             <span className="flex items-center px-3 text-xs font-bold text-yellow-200 uppercase bg-yellow-800 rounded-sm h-7">
